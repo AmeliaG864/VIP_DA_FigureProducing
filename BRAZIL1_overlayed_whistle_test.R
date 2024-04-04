@@ -13,7 +13,6 @@ library(tidyverse)
 library(dplyr)
 
 
-
 ############## Tidying and plotting reference category 1 (X1) ###############
 
 ### Creating new df (Brazil1a) with a renamed column 'category' > 'whistle' with only values from category X1
@@ -31,7 +30,6 @@ tail(Brazil1a)
 ggplot(Brazil1a) +
   geom_line(aes(x=time, y=frequency)) +
   labs(title = "Brazil ref cat 1")
-
 
 
 ############ WHISTLE 1 ; Sb_20160522_154000_sel015_enc02A26_BrazilPMCBS 
@@ -95,8 +93,6 @@ ggplot(data=join2,
   geom_line()
 
 
-
-
 ##################### From here on repeating same steps of : ##########################
 #### 1. Import whistle
 #### 2. Adjust temp res
@@ -104,7 +100,6 @@ ggplot(data=join2,
 #### 4. Tidy df
 #### 5. Join df with the one from the whistle before it 
 #### 6. Plot all whistles (and ref. contour) on same plot
-
 
 
 
@@ -165,7 +160,6 @@ ggplot(data=join3,
   geom_line()
 
 
-
 ####### WHISTLE 3 ###########
 
 
@@ -223,7 +217,6 @@ ggplot(data=join4,
   geom_line()
 
 
-
 ###### WHISTLE 4 #########
 
 ### Import data file 
@@ -264,7 +257,6 @@ tail(join5)
 ggplot(data=join5,
        aes(x=time, y=frequency, colour=whistle)) +
   geom_line()
-
 
 
 ############## WHISTLE 5 ##################
@@ -313,7 +305,6 @@ ggplot(data=join6,
   geom_line()
 
 
-
 ################# WHISTLE 6 ###################
 
 ### Import data file 
@@ -351,7 +342,6 @@ head(join7)
 ggplot(data=join7,
        aes(x=time, y=frequency, colour=whistle)) +
   geom_line()
-
 
 
 ############ WHISTLE 7 ############### 
@@ -395,7 +385,6 @@ ggplot(data=join8,
   geom_line()
 
 
-
 ############## WHISTLE 8 #################
 
 Sb_20190403_172000_sel012_enc08A64_BrazilPMCBS <- read_csv("Sb_20190403_172000_sel012_enc08A64_BrazilPMCBS.csv")
@@ -422,7 +411,6 @@ head(join9)
 ggplot(data=join9,
        aes(x=time, y=frequency, colour=whistle)) +
   geom_line()
-
 
 
 ############## WHISTLE 9 #################
@@ -453,7 +441,6 @@ ggplot(data=join10,
   geom_line()
 
 
-
 ############### WHISTLE 10 ###################
 
 Sb_20190403_173000_sel017_enc08A64_BrazilPMCBS <- read_csv("Sb_20190403_173000_sel017_enc08A64_BrazilPMCBS.csv")
@@ -480,7 +467,6 @@ head(join11)
 ggplot(data=join11,
        aes(x=time, y=frequency, colour=whistle)) +
   geom_line()
-
 
 
 ############# WHISTLE 11 ################
@@ -541,17 +527,13 @@ join13 <- full_join(join12, TidyB54, by = colnames(Brazil1a))
 View(join13)
 
 
-
 ################# FINAL PLOT WITH ALL WHISTLES AND REFERENCE CONTOUR (X1) #######################
 
 ## colour scheme is not very clear
 
-
 ggplot(data=join13,
        aes(x=time, y=frequency, colour=whistle)) +
   geom_line() 
-
-
 
 ## an attempt to better the colour scheme by making all whistles other than the ref. contour grey and ref contour red
 
