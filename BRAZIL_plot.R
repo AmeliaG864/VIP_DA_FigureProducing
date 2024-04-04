@@ -1,4 +1,3 @@
-
 ####### Code for plotting reference contours (with >1 whistle) from the Brazil_107 data set #########
 ####### Code includes loop code made by Emily, Rosie, Tom and Tristan
 
@@ -104,8 +103,7 @@ ggplot(tidyrefB) +
   facet_wrap(~category )
 
 ### Plot with non-standardised axis
-### Especially helpful for Brazil data, which had the smallest maximum x values
-### Standardised plot can therefore make smaller reference categories very hard to see
+### Especially helpful for Brazil data, which had the smallest maximum x values so the standardised plot can make smaller reference categories very hard to see
 
 ggplot(tidyrefB) +
   geom_line(aes(x=time, y=frequency, colour = category)) +
