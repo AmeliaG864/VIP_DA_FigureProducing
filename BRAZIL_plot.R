@@ -14,7 +14,7 @@ library("ggpubr")
 BRAZIL_refARTwarp_NOSINGwhistles <- read_csv("BRAZIL_refARTwarp_NOSINGwhistles.csv")
 View(BRAZIL_refARTwarp_NOSINGwhistles)
 
-### Reading the df in as 'refB' 
+### Re-name to 'refB' 
 
 refB <- read.csv("BRAZIL_refARTwarp_NOSINGwhistles.csv", header=T, sep="," )
 
@@ -25,7 +25,7 @@ head(refB)
 tail(refB)
 dim(refB)
 
-############# Code from here adapted and taken from Emily, Rosie, Tom and Tristan's code for creating the loop
+############# Code here adapted and taken from Emily, Rosie, Tom and Tristan's code for creating the loop
 ############# Includes code for adding time variable, checking df after adding the time variable, and creating loop
 
 ### Adding a time variable to refB
@@ -75,6 +75,7 @@ for (n in names(refB)){
   dev.off()
 }
 
+####### END of code adapted form Emily, Rosie, Tom and Tristan
 
 ###'Tidying' refB df to create a new df with columns 'time', 'category' and 'frequency' 
 ### refB currently has code where each column = frequency outputs from one reference category
@@ -90,8 +91,10 @@ tidyrefB <- refB %>%
 
 View(tidyrefB)
 
-### Creating the figure
-### 
+########## Creating the reference contour figure #############
+
+### The x and y axis have been standardised with the Med and Hawaii 107 data/ figures for easier visual comparison between locations
+### Figure facet-wrapped by category so each box of figure represents one reference category 
 
 ggplot(tidyrefB) +
   geom_line(aes(x=time, y=frequency, colour = category)) +
@@ -99,3 +102,13 @@ ggplot(tidyrefB) +
   xlim(0, 2.5) +
   ylim(3000, 15900) +
   facet_wrap(~category )
+
+### Plot with non-standardised axis
+### Especially helpful for Brazil data, which had the smallest maximum x values
+### Standardised plot can therefore make smaller reference categories very hard to see
+
+ggplot(tidyrefB) +
+  geom_line(aes(x=time, y=frequency, colour = category)) +
+  labs(title = "Brazil_107", x = "Time (s)", y = "Frequency (Hz)") + 
+  facet_wrap(~category )
+
